@@ -1,0 +1,13 @@
+{
+  "name": "fuyan",
+  "version": "1.0.0",
+  "description": "prerequisite     https://www.fuyan.org.tw/lecture.html  download lecture 中阿含經     https://products.aspose.app/words/conversion  convert to xhtml",
+  "main": "gen.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
