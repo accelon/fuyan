@@ -6,10 +6,13 @@ const out=[],footnotes=[],refertexts=[];
 
 const puretext_patch=content=>{
     return content.replace(/\(543\)（七六）/,'（七六）^pg543a')
+    .replace(/（(\d\d\d[abc])）/g,'^pg$1')
     .replace('^b[（二]O^b[一）]','（二O一）')
-    .replace('《中阿含》^f18（二七）','（二七）《中阿含》^f18')
+    .replace('《中阿含》^f6.18（二七）','（二七）《中阿含》^f6.18')
     .replace('^pg574c（九二）','（九二）^pg574c')
-    .replace('(^b[一九七])^f64^b[《中阿含》]','(一九七)^f64《中阿含》')
+    .replace('^pg749c（一九五）','（一九五）^pg749c')
+    .replace('(^b[一九七])^f52.64^b[《中阿含》]','(一九七)^f52.64《中阿含》')
+    
 }
 const mergebox=line=>{
     line=line.replace(/ \^box｛/g,'^box｛');
@@ -75,7 +78,7 @@ const gen=fn=>{
     const juan=parseInt(fn.match(/(\d+)\./)[1]);
     let content=readTextContent(rawdir+fn)
     content=content.replace(/<br \/>/g,'\n')
-    content=content.replace(/<a name="_ftnref(\d+)[^>]+>/g,"^f$1")
+    content=content.replace(/<a name="_ftnref(\d+)[^>]+>/g,"^f"+juan+".$1")
     content=content.replace(/<div id="_ftn(\d+)[^>]+>/g,"^fn$1");
 
     content=content.replace(/<\/p>/g,'\n').replace(/&#xa0;/g,'');
